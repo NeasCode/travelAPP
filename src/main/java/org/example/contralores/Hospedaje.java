@@ -2,9 +2,8 @@ package org.example.contralores;
 
 public class Hospedaje {
 
-    private int duracionEstadia, cantidadComidas;
+    private int duracionEstadia, cantidadComidas, incluyeAlimentacion;
     private String hotel, tipoHabitacion;
-    private boolean alimentacion;
     private double valorHotel;
 
 
@@ -12,12 +11,12 @@ public class Hospedaje {
     }
 
 
-    public Hospedaje(int duracionEstadia, int cantidadComidas, String hotel, String tipoHabitacion, boolean alimentacion, double valorHotel) {
+    public Hospedaje(int duracionEstadia, int cantidadComidas, String hotel, String tipoHabitacion, int incluyeAlimentacion, double valorHotel) {
         this.duracionEstadia = duracionEstadia;
         this.cantidadComidas = cantidadComidas;
         this.hotel = hotel;
         this.tipoHabitacion = tipoHabitacion;
-        this.alimentacion = alimentacion;
+        this.incluyeAlimentacion = incluyeAlimentacion;
         this.valorHotel = valorHotel;
     }
 
@@ -54,12 +53,12 @@ public class Hospedaje {
         this.tipoHabitacion = tipoHabitacion;
     }
 
-    public boolean isAlimentacion() {
-        return alimentacion;
+    public int getIncluyeAlimentacion() {
+        return incluyeAlimentacion;
     }
 
-    public void setAlimentacion(boolean alimentacion) {
-        this.alimentacion = alimentacion;
+    public void setIncluyeAlimentacion(int incluyeAlimentacion) {
+        this.incluyeAlimentacion = incluyeAlimentacion;
     }
 
     public double getValorHotel() {

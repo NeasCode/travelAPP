@@ -1,39 +1,29 @@
 package org.example.contralores;
 
-public class Viaje {
+public class Viaje extends Transporte {
 
-    private boolean tipoViaje;
-    private String medioTransporte, origen, destino, fechaViajeIda, fechaViajeRegreso;
-    private double valorPasaje;
+    private int tipoViaje;
+    private String origen, destino, fechaViajeIda, fechaViajeRegreso;
 
     public Viaje() {
     }
 
-    public Viaje(boolean tipoViaje, String medioTransporte, String origen, String destino, String fechaViajeIda, String fechaViajeRegreso, double valorPasaje) {
+    public Viaje(String tipoTransporte, String medioTransporte, double valorPasaje, int tipoViaje, String origen, String destino, String fechaViajeIda, String fechaViajeRegreso) {
+        super(tipoTransporte, medioTransporte, valorPasaje);
         this.tipoViaje = tipoViaje;
-        this.medioTransporte = medioTransporte;
         this.origen = origen;
         this.destino = destino;
         this.fechaViajeIda = fechaViajeIda;
         this.fechaViajeRegreso = fechaViajeRegreso;
-        this.valorPasaje = valorPasaje;
     }
 
 
-    public boolean isTipoViaje() {
+    public int isTipoViaje() {
         return tipoViaje;
     }
 
-    public void setTipoViaje(boolean tipoViaje) {
+    public void setTipoViaje(int tipoViaje) {
         this.tipoViaje = tipoViaje;
-    }
-
-    public String getMedioTransporte() {
-        return medioTransporte;
-    }
-
-    public void setMedioTransporte(String medioTransporte) {
-        this.medioTransporte = medioTransporte;
     }
 
     public String getOrigen() {
@@ -66,13 +56,5 @@ public class Viaje {
 
     public void setFechaViajeRegreso(String fechaViajeRegreso) {
         this.fechaViajeRegreso = fechaViajeRegreso;
-    }
-
-    public double getValorPasaje() {
-        return valorPasaje;
-    }
-
-    public void setValorPasaje(double valorPasaje) {
-        this.valorPasaje = valorPasaje;
     }
 }
