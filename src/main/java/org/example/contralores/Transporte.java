@@ -20,19 +20,9 @@ public class Transporte extends Viaje {
     }
 
     public void setTipoTransporte(int tipoTransporte) {
-        if(getTipoViaje()== 1 && tipoTransporte == 1){
-            valorPasaje = 200000;
+        if( tipoTransporte == 1 || tipoTransporte == 2){
             this.tipoTransporte = tipoTransporte;
-        } else if (getTipoViaje()== 1 && tipoTransporte == 2 ) {
-            valorPasaje = 100000;
-            this.tipoTransporte = tipoTransporte;
-        } else if (getTipoViaje()== 2 && tipoTransporte == 1){
-            valorPasaje = 3500000;
-            this.tipoTransporte = tipoTransporte;
-        } else if (getTipoViaje()== 2 && tipoTransporte == 2) {
-            valorPasaje = 2800000;
-            this.tipoTransporte = tipoTransporte;
-        } else{
+        }else{
             System.out.println("opcion incorrecta!!!");
         }
     }
@@ -42,7 +32,7 @@ public class Transporte extends Viaje {
     }
 
     public void setMedioTransporte(int medioTransporte) {
-        if(medioTransporte != 1 && medioTransporte != 2 && medioTransporte != 3){
+        if(medioTransporte != 1 || medioTransporte != 2 || medioTransporte != 3){
             System.out.println("Opcion invalida!!!");
         }else {
             this.medioTransporte = medioTransporte;

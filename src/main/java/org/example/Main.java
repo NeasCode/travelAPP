@@ -75,20 +75,44 @@ public class Main {
                     System.out.println("¿Hacia donde Viaja (destino)?");
                     viaje.setDestino(entradaDato.next());
 
-                    do {
+                    /* *************************************************************************************************************** */
 
+                    do {
                         System.out.print("¿Que tipo de viaje va a realizar? \n1. Nacional \n2. Internacional \nElige una opcion: ");
                         viaje.setTipoViaje(entradaDato.nextInt());
 
-                        if(viaje.getTipoViaje() == 1 || viaje.getTipoViaje() == 2){
-                            do {
-                                System.out.print("¿Por que tipo de transporte va a viajar? \n1. Aereo \n2. Terrestre \nElige una opcion: ");
-                                transporte.setTipoTransporte(entradaDato.nextInt());
 
-                            } while (transporte.getTipoTransporte() != 1 || transporte.getTipoTransporte() != 2);
+                        while (viaje.getTipoViaje() == 1 || viaje.getTipoViaje() == 2){
+
+                            System.out.print("¿Por que tipo de transporte va a viajar? \n1. Aereo \n2. Terrestre \nElige una opcion: ");
+                            transporte.setTipoTransporte(entradaDato.nextInt());
+                            break;
 
                         }
+
                     }while (viaje.getTipoViaje() != 1 && viaje.getTipoViaje() != 2);
+
+                    /* *************************************************************************************************************** */
+
+
+
+                    /*do {
+
+                        System.out.print("¿Que tipo de viaje va a realizar? \n1. Nacional \n2. Internacional \nElige una opcion: ");
+                        viaje.setTipoViaje(entradaDato.nextInt());
+                        int prueba = 0;
+
+                        if(viaje.getTipoViaje() == 1 || viaje.getTipoViaje() == 2){
+                            do {
+                            System.out.println(transporte.getTipoTransporte());
+                                System.out.print("¿Por que tipo de transporte va a viajar? \n1. Aereo \n2. Terrestre \nElige una opcion: ");
+                                transporte.setTipoTransporte(entradaDato.nextInt());
+                                prueba = 10;
+
+                            } while (prueba != 10);
+                        }
+
+                    }while (viaje.getTipoViaje() != 1 || viaje.getTipoViaje() != 2);*/
 
 
 
