@@ -2,8 +2,7 @@ package org.example.contralores;
 
 public class Hospedaje {
 
-    private int duracionEstadia, cantidadComidas, incluyeAlimentacion;
-    private String hotel, tipoHabitacion;
+    private int duracionEstadia, cantidadComidas, incluyeAlimentacion, hotel, tipoHabitacion;
     private double valorHotel;
 
 
@@ -11,7 +10,7 @@ public class Hospedaje {
     }
 
 
-    public Hospedaje(int duracionEstadia, int cantidadComidas, String hotel, String tipoHabitacion, int incluyeAlimentacion, double valorHotel) {
+    public Hospedaje(int duracionEstadia, int cantidadComidas, int hotel, int tipoHabitacion, int incluyeAlimentacion, double valorHotel) {
         this.duracionEstadia = duracionEstadia;
         this.cantidadComidas = cantidadComidas;
         this.hotel = hotel;
@@ -34,23 +33,60 @@ public class Hospedaje {
     }
 
     public void setCantidadComidas(int cantidadComidas) {
-        this.cantidadComidas = cantidadComidas;
+        if(hotel == 2){
+            cantidadComidas = 1;
+            this.cantidadComidas = cantidadComidas;
+        }else if (hotel == 3){
+            cantidadComidas = 3;
+            this.cantidadComidas = cantidadComidas;
+        }else {
+            System.out.println("El decameron incluye las 3 comidas!!!");
+        }
+
     }
 
-    public String getHotel() {
+    public int getHotel() {
         return hotel;
     }
 
-    public void setHotel(String hotel) {
-        this.hotel = hotel;
+    public void setHotel(int hotel) {
+        if (hotel == 1){
+            incluyeAlimentacion = 3;
+            System.out.println("incluye" +incluyeAlimentacion + "comidas");
+            this.hotel = hotel;
+        } else if (hotel == 2) {
+            incluyeAlimentacion = 2;
+            this.hotel = hotel;
+        } else if (hotel == 3){
+            incluyeAlimentacion = 0;
+            this.hotel = hotel;
+        }else {
+            System.out.println("El tipo de hospedaje no existe... Ingrese una opcion valida!!!");
+        }
     }
 
-    public String getTipoHabitacion() {
+    public int getTipoHabitacion() {
         return tipoHabitacion;
     }
 
-    public void setTipoHabitacion(String tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
+    public void setTipoHabitacion(int tipoHabitacion) {
+
+        if (hotel == 1 && tipoHabitacion == 1){
+            valorHotel = 200000;
+            this.tipoHabitacion = tipoHabitacion;
+        } else if (hotel == 1 && tipoHabitacion == 2 || hotel == 2 && tipoHabitacion == 2) {
+            valorHotel = 400000;
+            this.tipoHabitacion = tipoHabitacion;
+        } else if (hotel == 2 && tipoHabitacion == 1) {
+            valorHotel = 150000;
+            this.tipoHabitacion = tipoHabitacion;
+        } else if (hotel == 3) {
+            valorHotel = 80000;
+            this.tipoHabitacion = tipoHabitacion;
+        } else {
+            System.out.println("Opcion incorrecta!!!");
+        }
+
     }
 
     public int getIncluyeAlimentacion() {
@@ -67,5 +103,10 @@ public class Hospedaje {
 
     public void setValorHotel(double valorHotel) {
         this.valorHotel = valorHotel;
+    }
+
+    public double valorTotalHotel(){
+        double valorNetoHotel = duracionEstadia * valorHotel;
+        return valorNetoHotel;
     }
 }

@@ -1,6 +1,6 @@
 package org.example.contralores;
 
-public class Viaje extends Transporte {
+public class Viaje {
 
     private int tipoViaje;
     private String origen, destino, fechaViajeIda, fechaViajeRegreso;
@@ -8,8 +8,7 @@ public class Viaje extends Transporte {
     public Viaje() {
     }
 
-    public Viaje(String tipoTransporte, String medioTransporte, double valorPasaje, int tipoViaje, String origen, String destino, String fechaViajeIda, String fechaViajeRegreso) {
-        super(tipoTransporte, medioTransporte, valorPasaje);
+    public Viaje(int tipoViaje, String origen, String destino, String fechaViajeIda, String fechaViajeRegreso) {
         this.tipoViaje = tipoViaje;
         this.origen = origen;
         this.destino = destino;
@@ -18,12 +17,17 @@ public class Viaje extends Transporte {
     }
 
 
-    public int isTipoViaje() {
+    public int getTipoViaje() {
         return tipoViaje;
     }
 
     public void setTipoViaje(int tipoViaje) {
-        this.tipoViaje = tipoViaje;
+        if (tipoViaje != 1 && tipoViaje != 2){
+            System.out.println("opcion invalida!!!");
+        }else {
+            this.tipoViaje = tipoViaje;
+        }
+
     }
 
     public String getOrigen() {
@@ -56,5 +60,20 @@ public class Viaje extends Transporte {
 
     public void setFechaViajeRegreso(String fechaViajeRegreso) {
         this.fechaViajeRegreso = fechaViajeRegreso;
+    }
+
+    public double calcularCostoVuelo(int cargo, double salario){
+
+        if (tipoViaje == 1 && cargo == 1){
+            salario = salario * 0.2;
+        } else if (tipoViaje == 1 && cargo == 2) {
+            salario = salario * 0.3;
+        } else if (tipoViaje == 2 && cargo == 1) {
+            salario = salario * 0.4;
+        }else {
+            salario = salario * 0.5;
+        }
+
+        return salario;
     }
 }
