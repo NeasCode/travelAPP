@@ -20,7 +20,7 @@ public class Transporte extends Viaje {
     }
 
     public void setTipoTransporte(int tipoTransporte) {
-        if( tipoTransporte == 1 || tipoTransporte == 2){
+        if(tipoTransporte == 1 || tipoTransporte == 2){
             this.tipoTransporte = tipoTransporte;
         }else{
             System.out.println("opcion incorrecta!!!");
@@ -32,10 +32,10 @@ public class Transporte extends Viaje {
     }
 
     public void setMedioTransporte(int medioTransporte) {
-        if(medioTransporte != 1 || medioTransporte != 2 || medioTransporte != 3){
-            System.out.println("Opcion invalida!!!");
-        }else {
+        if(medioTransporte == 1 || medioTransporte == 2 || medioTransporte == 3){
             this.medioTransporte = medioTransporte;
+        }else {
+            System.out.println("Opcion invalida!!!");
         }
     }
 
