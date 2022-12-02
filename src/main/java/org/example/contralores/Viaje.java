@@ -62,23 +62,24 @@ public class Viaje {
         this.fechaViajeRegreso = fechaViajeRegreso;
     }
 
-    public double calcularAuxilioVuelo(int cargo, double salario){
+    public double calcularAuxilioVuelo(int cargo, double auxilio){
 
         if (tipoViaje == 1 && cargo == 1){
-            salario = salario * 0.2;
+            auxilio = auxilio * 0.2;
         } else if (tipoViaje == 1 && cargo == 2) {
-            salario = salario * 0.3;
+            auxilio = auxilio * 0.3;
         } else if (tipoViaje == 2 && cargo == 1) {
-            salario = salario * 0.4;
+            auxilio = auxilio * 0.4;
         }else {
-            salario = salario * 0.5;
+            auxilio = auxilio * 0.5;
         }
 
-        return salario;
+        return auxilio;
     }
 
 
-    public double calcularCostoVuelo(int tipoTransporte, double valorViaje){
+    public double calcularCostoVuelo(int tipoTransporte){
+        double valorViaje = 0;
         if(tipoViaje == 1 && tipoTransporte == 1){
             valorViaje = 280000;
         }else if (tipoViaje == 1 && tipoTransporte == 2){

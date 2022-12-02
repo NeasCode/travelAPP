@@ -32,9 +32,13 @@ public class Transporte extends Viaje {
     }
 
     public void setMedioTransporte(int medioTransporte) {
-        if(medioTransporte == 1 || medioTransporte == 2 || medioTransporte == 3){
+        if(medioTransporte == 1 ){
+            valorPasaje = 5000;
             this.medioTransporte = medioTransporte;
-        }else {
+        } else if (medioTransporte == 2 && medioTransporte == 3) {
+            valorPasaje = 20000;
+            this.medioTransporte = medioTransporte;
+        } else {
             System.out.println("Opcion invalida!!!");
         }
     }

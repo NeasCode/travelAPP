@@ -28,8 +28,23 @@ public class Alimentacion {
     }
 
     public void setValorAlimentacion(double valorAlimentacion) {
+        valorAlimentacion = 20000;
         this.valorAlimentacion = valorAlimentacion;
     }
+
+    public double valorComidasExtras (int hotel){
+        double valorComidas = 0;
+        if (hotel == 2){
+            comidasExtras = 1;
+            valorComidas = comidasExtras * valorAlimentacion;
+        } else if (hotel == 3){
+            comidasExtras = 3;
+            valorComidas = comidasExtras * valorAlimentacion;
+        }
+        return valorComidas;
+    }
+
+
 }
 
 

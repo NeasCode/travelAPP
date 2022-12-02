@@ -4,10 +4,12 @@ import org.example.contralores.Hospedaje;
 import org.example.contralores.Transporte;
 import org.example.contralores.Viaje;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner entradaDato = new Scanner(System.in);
+        ArrayList<Empleado> empleados = new ArrayList<Empleado>();
         Empleado empleado = new Empleado();
         Hospedaje hospedaje = new Hospedaje();
         Viaje viaje = new Viaje();
@@ -26,7 +28,7 @@ public class Main {
 
                     System.out.print("Ingrese el nombre: ");
                     empleado.setNombre(entradaDato.next());
-                    /*System.out.print("Ingrese el apellido: ");
+                    System.out.print("Ingrese el apellido: ");
                     empleado.setApellido(entradaDato.next());
                     System.out.print("Ingrese la cedula: ");
                     empleado.setCedula(entradaDato.next());
@@ -36,7 +38,7 @@ public class Main {
                     do {
                         System.out.print("Ingrese la edad: ");
                         empleado.setEdad(entradaDato.nextInt());
-                    }while (empleado.getEdad() < 18 || empleado.getEdad() > 80);*/
+                    }while (empleado.getEdad() < 18 || empleado.getEdad() > 80);
 
                     do {
                         System.out.print("Cargo: \n1. Analista Jr. \n2. Analista Sr. \nElige una opcion: ");
@@ -50,7 +52,7 @@ public class Main {
 
                     break;
                 case 2:
-                    /*System.out.println("****** Datos del hospedaje ******");
+                    System.out.println("****** Datos del hospedaje ******");
                     System.out.println("");
                     System.out.println("****** Ingrese la fecha del viaje ******");
                     System.out.print("Fecha de ida (dd/mm/aaaa): ");
@@ -70,7 +72,11 @@ public class Main {
                         }else {
                             System.out.println("Seleccione una opcion correcta!!!");
                         }
-                    }while (hospedaje.getHotel() != 1 && hospedaje.getHotel() != 2 && hospedaje.getHotel() != 3);*/
+                    }while (hospedaje.getHotel() != 1 && hospedaje.getHotel() != 2 && hospedaje.getHotel() != 3);
+
+                    System.out.println("");
+                    System.out.println("****** el costo del hotel es: " + hospedaje.valorTotalHotel() + " ******");
+                    System.out.println("");
 
 
                     System.out.println("****** Datos del viaje ******");
@@ -110,29 +116,27 @@ public class Main {
 
                     }while (viaje.getTipoViaje() != 1 && viaje.getTipoViaje() != 2);
 
+                    System.out.println("");
+                    System.out.println("****** El valor total del viaje es: " + viaje.calcularCostoVuelo(transporte.getTipoTransporte()) + " ******");
+                    System.out.println("");
 
 
                     System.out.println("****** Transporte desde el destino hasta el hotel ******");
 
                     do {
-                        System.out.print("¿Que medio de transporte va a utilizar? \n1. Bus \n2. Taxi \n3. Plataformas ilegales \nElige una opcion: ");
+                        System.out.print("¿Que medio de transporte va a utilizar? \n1. Bus \n2. Taxi \n3. Plataformas \nElige una opcion: ");
                         transporte.setMedioTransporte(entradaDato.nextInt());
 
                     }while (transporte.getMedioTransporte() != 1 && transporte.getMedioTransporte() != 2 && transporte.getMedioTransporte() != 3);
+
                     System.out.println("");
-
-
-
-                    if(viaje.getTipoViaje() == 1 && transporte.getTipoTransporte() == 1){
-
-                    }
-
-
-
-                    System.out.println("El valor total del viaje es: ");
+                    System.out.println("El valor del pasaje hasta el hotel es: $" + transporte.getValorPasaje());
+                    System.out.println("");
 
                     break;
                 case 3:
+
+
                     break;
                 case 4:
                     break;
