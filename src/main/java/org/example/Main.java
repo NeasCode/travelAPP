@@ -24,31 +24,35 @@ public class Main {
             System.out.println("");
             switch (opcionMenu){
                 case 1:
+
+                    Empleado objetoeEmpleado = new Empleado();
                     System.out.println("****** Datos del empleado ******");
 
                     System.out.print("Ingrese el nombre: ");
-                    empleado.setNombre(entradaDato.next());
+                    objetoeEmpleado.setNombre(entradaDato.next());
                     System.out.print("Ingrese el apellido: ");
-                    empleado.setApellido(entradaDato.next());
+                    objetoeEmpleado.setApellido(entradaDato.next());
                     System.out.print("Ingrese la cedula: ");
-                    empleado.setCedula(entradaDato.next());
+                    objetoeEmpleado.setCedula(entradaDato.next());
                     System.out.print("Ingrese el numero de celular: ");
-                    empleado.setCelular(entradaDato.next());
+                    objetoeEmpleado.setCelular(entradaDato.next());
 
                     do {
                         System.out.print("Ingrese la edad: ");
-                        empleado.setEdad(entradaDato.nextInt());
-                    }while (empleado.getEdad() < 18 || empleado.getEdad() > 80);
+                        objetoeEmpleado.setEdad(entradaDato.nextInt());
+                    }while (objetoeEmpleado.getEdad() < 18 || objetoeEmpleado.getEdad() > 80);
 
                     do {
                         System.out.print("Cargo: \n1. Analista Jr. \n2. Analista Sr. \nElige una opcion: ");
-                        empleado.setCargo(entradaDato.nextInt());
-                    }while (empleado.getCargo() != 1 && empleado.getCargo() != 2);
+                        objetoeEmpleado.setCargo(entradaDato.nextInt());
+                    }while (objetoeEmpleado.getCargo() != 1 && objetoeEmpleado.getCargo() != 2);
 
 
                     System.out.print("¿Tiene Visa o Pasaporte? \n1. Si \n2. No \n3. Ambas \n4. Ninguna de las anteriores \nElige una opcion: ");
-                    empleado.setVisa(entradaDato.nextInt());
+                    objetoeEmpleado.setVisa(entradaDato.nextInt());
                     System.out.println("");
+
+                    empleados.add(objetoeEmpleado);
 
                     break;
                 case 2:
@@ -135,7 +139,17 @@ public class Main {
 
                     break;
                 case 3:
-
+                    System.out.println("***** MOSTRANDO DATOS DEL EMPLEADO *****");
+                    System.out.println();
+                        for (Empleado verEmpleado: empleados){
+                            System.out.println("Nombre Empleado: "+ verEmpleado.getNombre()+" "+verEmpleado.getApellido());
+                            System.out.println("Cedula del Empleado: "+verEmpleado.getCedula() );
+                            System.out.println("Edad del Empleado: "+ verEmpleado.getEdad() + " años");
+                            System.out.println("Celular del Empleado: "+ verEmpleado.getCelular() );
+                            System.out.println("Cargo del Empleado: "+ verEmpleado.getCargo() );
+                            System.out.println("Salario del Empleado: "+ verEmpleado.getSalario() );
+                            System.out.println("El empleado cuenta con: "+ verEmpleado.getVisa());
+                        }
 
                     break;
                 case 4:
