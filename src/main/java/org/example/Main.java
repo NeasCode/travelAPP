@@ -48,7 +48,7 @@ public class Main {
                     }while (objetoeEmpleado.getCargo() != 1 && objetoeEmpleado.getCargo() != 2);
 
 
-                    System.out.print("¿Tiene Visa o Pasaporte? \n1. Si \n2. No \n3. Ambas \n4. Ninguna de las anteriores \nElige una opcion: ");
+                    System.out.print("¿Tiene Visa o Pasaporte? \n1. Si \n2. No \n3. Ambas \nElige una opcion: ");
                     objetoeEmpleado.setVisa(entradaDato.nextInt());
                     System.out.println("");
 
@@ -141,18 +141,28 @@ public class Main {
                 case 3:
                     System.out.println("***** MOSTRANDO DATOS DEL EMPLEADO *****");
                     System.out.println();
+                    System.out.println("-Cargo: 1 -> Analista Jr / 2 -> Analista Sr");
+                    System.out.println("-¿Posee visa o pasaporte? 1 -> Si / 2 -> No / 3 -> Ambas");
+
                         for (Empleado verEmpleado: empleados){
-                            System.out.println("Nombre Empleado: "+ verEmpleado.getNombre()+" "+verEmpleado.getApellido());
-                            System.out.println("Cedula del Empleado: "+verEmpleado.getCedula() );
-                            System.out.println("Edad del Empleado: "+ verEmpleado.getEdad() + " años");
-                            System.out.println("Celular del Empleado: "+ verEmpleado.getCelular() );
-                            System.out.println("Cargo del Empleado: "+ verEmpleado.getCargo() );
-                            System.out.println("Salario del Empleado: "+ verEmpleado.getSalario() );
-                            System.out.println("El empleado cuenta con: "+ verEmpleado.getVisa());
+                            System.out.println("Nombre: "+ verEmpleado.getNombre()+" "+verEmpleado.getApellido());
+                            System.out.println("Cedula: "+verEmpleado.getCedula() );
+                            System.out.println("Edad: "+ verEmpleado.getEdad() + " años");
+                            System.out.println("Celular: "+ verEmpleado.getCelular() );
+                            System.out.println("Cargo: "+ verEmpleado.getCargo() );
+                            System.out.println("Salario: "+ verEmpleado.getSalario() );
+                            System.out.println("Cuenta con visa o pasaporte: "+ verEmpleado.getVisa());
                         }
 
                     break;
                 case 4:
+                    System.out.println("***** MOSTRANDO VIAJES REALIZADOS *****");
+                    System.out.println();
+                    System.out.println("Habitación: 1 -> Sencilla / 2 -> Suite");
+                    System.out.println("Hotel: 1 -> Decameron / 2 -> Dann Carlton / 3 -> Hostal");
+                    System.out.println("Tipo de Viaje: 1 -> Nacional \nTipo de Transporte: 1 -> Aereo / 2 -> Terrestre");
+                    System.out.println("Tipo de Viaje: 2 -> Internacional \nTipo de Transporte: 1 -> Aereo / 2 -> Maritimo");
+
                     break;
                 default:
                     break;
