@@ -38,7 +38,7 @@ public class Alimentacion {
             comidasExtras = 1;
             valorComidas = comidasExtras * valorAlimentacion;
         } else if (hotel == 3){
-            comidasExtras = 3;
+            comidasExtras = 2;
             valorComidas = comidasExtras * valorAlimentacion;
         }
         return valorComidas;

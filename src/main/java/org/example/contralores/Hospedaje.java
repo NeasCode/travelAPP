@@ -37,14 +37,10 @@ public class Hospedaje extends Viaje {
             System.out.println("Este hotel incluye " + incluyeAlimentacion + " comidas");
             this.hotel = hotel;
         } else if (hotel == 2) {
-            System.out.println("Este hotel incluye " + incluyeAlimentacion + " comidas");
             incluyeAlimentacion = 2;
+            System.out.println("Este hotel incluye " + incluyeAlimentacion + " comidas");
             this.hotel = hotel;
-        } else if (hotel == 3){
-            System.out.println("Este hotel no incluye alimentacion!!!");
-            incluyeAlimentacion = 0;
-            this.hotel = hotel;
-        }else {
+        } else {
             System.out.println("El tipo de hospedaje no existe... Ingrese una opcion valida!!!");
         }
     }
@@ -63,9 +59,6 @@ public class Hospedaje extends Viaje {
             this.tipoHabitacion = tipoHabitacion;
         } else if (hotel == 2 && tipoHabitacion == 1) {
             valorHotel = 150000;
-            this.tipoHabitacion = tipoHabitacion;
-        } else if (hotel == 3) {
-            valorHotel = 80000;
             this.tipoHabitacion = tipoHabitacion;
         } else {
             System.out.println("Opcion incorrecta!!!");

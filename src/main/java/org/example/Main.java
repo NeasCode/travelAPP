@@ -5,17 +5,20 @@ import org.example.contralores.Transporte;
 import org.example.contralores.Viaje;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner entradaDato = new Scanner(System.in);
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
         ArrayList<Viaje> viajes = new ArrayList<Viaje>();
+        ArrayList<Hospedaje> hospedajes = new ArrayList<Hospedaje>();
 
-        Empleado empleado = new Empleado();
-        /*Hospedaje objetoHospedaje = new Hospedaje();
+        Hospedaje objetoHospedaje = new Hospedaje();
         Viaje objetoViaje = new Viaje();
-        Transporte objetoTransporte = new Transporte();*/
+        Transporte objetoTransporte = new Transporte();
+        Empleado empleado = new Empleado();
+
 
         int opcionMenu;
 
@@ -27,131 +30,149 @@ public class Main {
             switch (opcionMenu){
                 case 1:
 
-                    Empleado objetoEmpleado = new Empleado();
+                    Empleado objetoeEmpleado = new Empleado();
                     System.out.println("****** Datos del empleado ******");
 
                     System.out.print("Ingrese el nombre: ");
-                    objetoEmpleado.setNombre(entradaDato.next());
+                    objetoeEmpleado.setNombre(entradaDato.next());
                     System.out.print("Ingrese el apellido: ");
-                    objetoEmpleado.setApellido(entradaDato.next());
+                    objetoeEmpleado.setApellido(entradaDato.next());
                     System.out.print("Ingrese la cedula: ");
-                    objetoEmpleado.setCedula(entradaDato.nextInt());
+                    objetoeEmpleado.setCedula(entradaDato.nextInt());
                     System.out.print("Ingrese el numero de celular: ");
-                    objetoEmpleado.setCelular(entradaDato.next());
+                    objetoeEmpleado.setCelular(entradaDato.next());
 
                     do {
                         System.out.print("Ingrese la edad: ");
-                        objetoEmpleado.setEdad(entradaDato.nextInt());
-                    }while (objetoEmpleado.getEdad() < 18 || objetoEmpleado.getEdad() > 80);
+                        objetoeEmpleado.setEdad(entradaDato.nextInt());
+                    }while (objetoeEmpleado.getEdad() < 18 || objetoeEmpleado.getEdad() > 80);
 
                     do {
                         System.out.print("Cargo: \n1. Analista Jr. \n2. Analista Sr. \nElige una opcion: ");
-                        objetoEmpleado.setCargo(entradaDato.nextInt());
-                    }while (objetoEmpleado.getCargo() != 1 && objetoEmpleado.getCargo() != 2);
+                        objetoeEmpleado.setCargo(entradaDato.nextInt());
+                    }while (objetoeEmpleado.getCargo() != 1 && objetoeEmpleado.getCargo() != 2);
 
 
                     System.out.print("¿Tiene Visa o Pasaporte? \n1. Si \n2. No \n3. Ambas \nElige una opcion: ");
-                    objetoEmpleado.setVisa(entradaDato.nextInt());
+                    objetoeEmpleado.setVisa(entradaDato.nextInt());
                     System.out.println("");
 
-                    empleados.add(objetoEmpleado);
+                    empleados.add(objetoeEmpleado);
 
                     break;
                 case 2:
                     Hospedaje hospedaje = new Hospedaje();
                     Viaje viaje = new Viaje();
                     Transporte transporte = new Transporte();
-
                     System.out.println("****** Datos del hospedaje ******");
                     System.out.println("");
 
 
-                    /* CODIGO AQUI */
-
-
-
-                    System.out.println("****** Ingrese la fecha del viaje ******");
-                    System.out.print("Fecha de ida (dd/mm/aaaa): ");
-                    viaje.setFechaViajeIda(entradaDato.next());
-                    System.out.print("Fecha de regreso (dd/mm/aaaa): ");
-                    viaje.setFechaViajeRegreso(entradaDato.next());
-                    System.out.print("¿Cuantos dias se va a hospedar?: ");
-                    hospedaje.setDuracionEstadia(entradaDato.nextInt());
-                    do {
-                        System.out.print("¿En que hotel desea hospedarse? \n1. Decameron \n2. Dann Carlton \n3. Hostal \nElige una opcion: ");
-                        hospedaje.setHotel(entradaDato.nextInt());
-                        if (hospedaje.getHotel() == 1 || hospedaje.getHotel()==2){
-                            System.out.print("¿En que tipo de habitación desea hospedarse? \n1. Sencilla \n2. Suite \nElige una opcion: ");
-                            hospedaje.setTipoHabitacion(entradaDato.nextInt());
-                        }else if (hospedaje.getHotel()== 3){
-                            System.out.println("El hostal solo cuenta con un tipo de habitacion estandar");
-                        }else {
-                            System.out.println("Seleccione una opcion correcta!!!");
-                        }
-                    }while (hospedaje.getHotel() != 1 && hospedaje.getHotel() != 2 && hospedaje.getHotel() != 3);
-
-                    System.out.println("");
-                    System.out.println("****** el costo del hotel es: " + hospedaje.valorTotalHotel() + " ******");
-                    System.out.println("");
-
-
-                    System.out.println("****** Datos del viaje ******");
-                    System.out.println("");
-                    System.out.print("¿Desde donde viaja?");
-                    viaje.setOrigen(entradaDato.next());
-                    System.out.print("¿Hacia donde Viaja (destino)?");
-                    viaje.setDestino(entradaDato.next());
-
-                    do {
-                        System.out.print("¿Que tipo de viaje va a realizar? \n1. Nacional \n2. Internacional \nElige una opcion: ");
-                        viaje.setTipoViaje(entradaDato.nextInt());
-
-                        System.out.println("");
-                        System.out.println("Hola " + empleado.getNombre() + " " + empleado.getApellido() + "\ncuentas con un auxilio en el viaje de:  $" + viaje.calcularAuxilioVuelo(empleado.getCargo(), empleado.getSalario()));
-                        System.out.println("");
-
-                        if (viaje.getTipoViaje() == 1){
+                    boolean encontrarEmpleado = false;
+                    int cedulaEmpleado;
+                    System.out.println("Ingrese el documento del empleado que va a realizar el viaje: ");
+                    cedulaEmpleado= entradaDato.nextInt();
+                    for (int i = 0; i < empleados.size(); i++){
+                        Empleado buscarEmpleado=empleados.get(i);
+                        if (Objects.equals(buscarEmpleado.getCedula(),cedulaEmpleado)){
+                            System.out.println();
+                            System.out.println("Vas a registrar un viaje para el empleado: " + buscarEmpleado.getNombre() + " " + buscarEmpleado.getApellido()  );
+                            System.out.println();
+                            System.out.println("****** Ingrese la fecha del viaje ******");
+                            System.out.print("Fecha de ida (dd/mm/aaaa): ");
+                            viaje.setFechaViajeIda(entradaDato.next());
+                            System.out.print("Fecha de regreso (dd/mm/aaaa): ");
+                            viaje.setFechaViajeRegreso(entradaDato.next());
+                            System.out.print("¿Cuantos dias se va a hospedar?: ");
+                            hospedaje.setDuracionEstadia(entradaDato.nextInt());
                             do {
-                                System.out.print("¿Por que tipo de transporte va a viajar? \n1. Aereo \n2. Terrestre \nElige una opcion: ");
-                                transporte.setTipoTransporte(entradaDato.nextInt());
+                                System.out.print("¿En que hotel desea hospedarse? \n1. Decameron \n2. Dann Carlton \nElige una opcion: ");
+                                hospedaje.setHotel(entradaDato.nextInt());
+                                if (hospedaje.getHotel() == 1 || hospedaje.getHotel()==2){
+                                    System.out.print("¿En que tipo de habitación desea hospedarse? \n1. Sencilla \n2. Suite \nElige una opcion: ");
+                                    hospedaje.setTipoHabitacion(entradaDato.nextInt());
+                                }else {
+                                    System.out.println("Seleccione una opcion correcta!!!");
+                                }
+                            }while (hospedaje.getHotel() != 1 && hospedaje.getHotel() != 2);
 
-                            }while (transporte.getTipoTransporte() != 1 && transporte.getTipoTransporte() != 2);
+                            System.out.println("");
+                            System.out.println("****** el costo del hotel es: " + hospedaje.valorTotalHotel() + " ******");
+                            System.out.println("");
 
-                        }else if (viaje.getTipoViaje() == 2 && empleado.getVisa() != 2){
+
+                            System.out.println("****** Datos del viaje ******");
+                            System.out.println("");
+                            System.out.print("¿Desde donde viaja?");
+                            viaje.setOrigen(entradaDato.next());
+                            System.out.print("¿Hacia donde Viaja (destino)?");
+                            viaje.setDestino(entradaDato.next());
+
                             do {
-                                System.out.print("¿Por que tipo de transporte va a viajar? \n1. Aereo \n2. Maritimo \nElige una opcion: ");
-                                transporte.setTipoTransporte(entradaDato.nextInt());
+                                System.out.print("¿Que tipo de viaje va a realizar? \n1. Nacional \n2. Internacional \nElige una opcion: ");
+                                viaje.setTipoViaje(entradaDato.nextInt());
 
-                            }while (transporte.getTipoTransporte() != 1 && transporte.getTipoTransporte() != 2);
-                        }
+                                System.out.println("");
+                                System.out.println("Hola " + buscarEmpleado.getNombre() + " " + buscarEmpleado.getApellido() + "\ncuentas con un auxilio en el viaje de:  $" + viaje.calcularAuxilioVuelo(buscarEmpleado.getCargo(), buscarEmpleado.getSalario()));
+                                System.out.println("");
 
-                        while (viaje.getTipoViaje() == 2 && empleado.getVisa() == 2){
-                            System.out.println("No cuenta con los documentos necesarios para realizar este viaje!!!");
+                                if (viaje.getTipoViaje() == 1){
+                                    do {
+                                        System.out.print("¿Por que tipo de transporte va a viajar? \n1. Aereo \n2. Terrestre \nElige una opcion: ");
+                                        transporte.setTipoTransporte(entradaDato.nextInt());
+
+                                    }while (transporte.getTipoTransporte() != 1 && transporte.getTipoTransporte() != 2);
+
+                                }else if (viaje.getTipoViaje() == 2 && buscarEmpleado.getVisa() != 2){
+                                    do {
+                                        System.out.print("¿Por que tipo de transporte va a viajar? \n1. Aereo \n2. Maritimo \nElige una opcion: ");
+                                        transporte.setTipoTransporte(entradaDato.nextInt());
+
+                                    }while (transporte.getTipoTransporte() != 1 && transporte.getTipoTransporte() != 2);
+                                }
+
+                                while (viaje.getTipoViaje() == 2 && buscarEmpleado.getVisa() == 2){
+                                    System.out.println("No cuenta con los documentos necesarios para realizar este viaje!!!");
+                                    break;
+                                }
+
+                            }while (viaje.getTipoViaje() != 1 && viaje.getTipoViaje() != 2);
+
+                            System.out.println("");
+                            System.out.println("****** El valor total del viaje es: " + viaje.calcularCostoVuelo(transporte.getTipoTransporte()) + " ******");
+                            System.out.println("");
+
+
+                            System.out.println("****** Transporte desde el destino hasta el hotel ******");
+
+                            do {
+                                System.out.print("¿Que medio de transporte va a utilizar? \n1. Bus \n2. Taxi \n3. Plataformas \nElige una opcion: ");
+                                transporte.setMedioTransporte(entradaDato.nextInt());
+
+                            }while (transporte.getMedioTransporte() != 1 && transporte.getMedioTransporte() != 2 && transporte.getMedioTransporte() != 3);
+
+                            System.out.println("");
+                            System.out.println("El valor del pasaje hasta el hotel es: $" + transporte.getValorPasaje());
+                            System.out.println("");
+
+                            viajes.add(viaje);
+                            viajes.add(transporte);
+                            hospedajes.add(hospedaje);
+                            encontrarEmpleado=false;
                             break;
+                        }else {
+                            encontrarEmpleado=true;
                         }
+                    }
+                    if (encontrarEmpleado) {
+                        System.out.println();
+                        System.out.println("NO SE HA REGISTRADO NINGUN EMPLEADO CON ESTE NUMERO DE CEDULA");
+                        System.out.println();
+                    }else{
+                        continue;
+                    }
 
-                    }while (viaje.getTipoViaje() != 1 && viaje.getTipoViaje() != 2);
 
-                    System.out.println("");
-                    System.out.println("****** El valor total del viaje es: " + viaje.calcularCostoVuelo(transporte.getTipoTransporte()) + " ******");
-                    System.out.println("");
-
-
-                    System.out.println("****** Transporte desde el destino hasta el hotel ******");
-
-                    do {
-                        System.out.print("¿Que medio de transporte va a utilizar? \n1. Bus \n2. Taxi \n3. Plataformas \nElige una opcion: ");
-                        transporte.setMedioTransporte(entradaDato.nextInt());
-
-                    }while (transporte.getMedioTransporte() != 1 && transporte.getMedioTransporte() != 2 && transporte.getMedioTransporte() != 3);
-
-                    System.out.println("");
-                    System.out.println("El valor del pasaje hasta el hotel es: $" + transporte.getValorPasaje());
-                    System.out.println("");
-
-                    viajes.add(viaje);
-                    viajes.add(hospedaje);
-                    viajes.add(transporte);
 
                     break;
                 case 3:
@@ -160,15 +181,15 @@ public class Main {
                     System.out.println("-Cargo: 1 -> Analista Jr / 2 -> Analista Sr");
                     System.out.println("-¿Posee visa o pasaporte? 1 -> Si / 2 -> No / 3 -> Ambas");
 
-                        for (Empleado verEmpleado: empleados){
-                            System.out.println("Nombre: "+ verEmpleado.getNombre()+" "+verEmpleado.getApellido());
-                            System.out.println("Cedula: "+verEmpleado.getCedula() );
-                            System.out.println("Edad: "+ verEmpleado.getEdad() + " años");
-                            System.out.println("Celular: "+ verEmpleado.getCelular() );
-                            System.out.println("Cargo: "+ verEmpleado.getCargo() );
-                            System.out.println("Salario: "+ verEmpleado.getSalario() );
-                            System.out.println("Cuenta con visa o pasaporte: "+ verEmpleado.getVisa());
-                        }
+                    for (Empleado verEmpleado: empleados){
+                        System.out.println("Nombre: "+ verEmpleado.getNombre()+" "+verEmpleado.getApellido());
+                        System.out.println("Cedula: "+verEmpleado.getCedula() );
+                        System.out.println("Edad: "+ verEmpleado.getEdad() + " años");
+                        System.out.println("Celular: "+ verEmpleado.getCelular() );
+                        System.out.println("Cargo: "+ verEmpleado.getCargo() );
+                        System.out.println("Salario: "+ verEmpleado.getSalario() );
+                        System.out.println("Cuenta con visa o pasaporte: "+ verEmpleado.getVisa());
+                    }
 
                     break;
                 case 4:
@@ -186,15 +207,17 @@ public class Main {
                         for (Viaje mostrarViajeEmpleado: viajes) {
                             if(viajeEmpleado.getCedula() == cedula){
 
-                                System.out.println("DATOS AQUI");
-
+                                System.out.println("El empleado realizara un viaje: " + mostrarViajeEmpleado.getTipoViaje());
+                                System.out.println("El empleado viajara desde : " + mostrarViajeEmpleado.getOrigen());
+                                System.out.println("El empleado viajara hasta : " + mostrarViajeEmpleado.getDestino());
+                                System.out.println("El empleado tendra el viaje de ida, el dia : " + mostrarViajeEmpleado.getFechaViajeIda() + "y regresara el dia:" +mostrarViajeEmpleado.getFechaViajeRegreso());
                             }else{
                                 System.out.println("el empleado no esta resgistrado");
                             }
                         }
-                        
+
                     }
-                    
+
                     break;
                 default:
                     break;
