@@ -3,14 +3,14 @@ package org.example.contralores;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 public class Empleado {
-    private String nombre, apellido, cedula, celular;
-    private int edad, cargo, visa;
+    private String nombre, apellido, celular;
+    private int edad, cargo, cedula, visa;
     private double salario;
 
     public Empleado() {
     }
 
-    public Empleado(String nombre, String apellido, String cedula, int cargo, String celular, int edad, double salario, int visa) {
+    public Empleado(String nombre, String apellido, int cedula, int cargo, String celular, int edad, double salario, int visa) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
@@ -40,12 +40,12 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public String getCedula() {
+    public int getCedula() {
 
         return cedula;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(int cedula) {
 
         this.cedula = cedula;
     }

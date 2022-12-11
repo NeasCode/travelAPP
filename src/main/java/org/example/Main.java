@@ -10,10 +10,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner entradaDato = new Scanner(System.in);
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+        ArrayList<Viaje> viajes = new ArrayList<Viaje>();
+
         Empleado empleado = new Empleado();
-        Hospedaje hospedaje = new Hospedaje();
-        Viaje viaje = new Viaje();
-        Transporte transporte = new Transporte();
+        /*Hospedaje objetoHospedaje = new Hospedaje();
+        Viaje objetoViaje = new Viaje();
+        Transporte objetoTransporte = new Transporte();*/
 
         int opcionMenu;
 
@@ -25,39 +27,49 @@ public class Main {
             switch (opcionMenu){
                 case 1:
 
-                    Empleado objetoeEmpleado = new Empleado();
+                    Empleado objetoEmpleado = new Empleado();
                     System.out.println("****** Datos del empleado ******");
 
                     System.out.print("Ingrese el nombre: ");
-                    objetoeEmpleado.setNombre(entradaDato.next());
+                    objetoEmpleado.setNombre(entradaDato.next());
                     System.out.print("Ingrese el apellido: ");
-                    objetoeEmpleado.setApellido(entradaDato.next());
+                    objetoEmpleado.setApellido(entradaDato.next());
                     System.out.print("Ingrese la cedula: ");
-                    objetoeEmpleado.setCedula(entradaDato.next());
+                    objetoEmpleado.setCedula(entradaDato.nextInt());
                     System.out.print("Ingrese el numero de celular: ");
-                    objetoeEmpleado.setCelular(entradaDato.next());
+                    objetoEmpleado.setCelular(entradaDato.next());
 
                     do {
                         System.out.print("Ingrese la edad: ");
-                        objetoeEmpleado.setEdad(entradaDato.nextInt());
-                    }while (objetoeEmpleado.getEdad() < 18 || objetoeEmpleado.getEdad() > 80);
+                        objetoEmpleado.setEdad(entradaDato.nextInt());
+                    }while (objetoEmpleado.getEdad() < 18 || objetoEmpleado.getEdad() > 80);
 
                     do {
                         System.out.print("Cargo: \n1. Analista Jr. \n2. Analista Sr. \nElige una opcion: ");
-                        objetoeEmpleado.setCargo(entradaDato.nextInt());
-                    }while (objetoeEmpleado.getCargo() != 1 && objetoeEmpleado.getCargo() != 2);
+                        objetoEmpleado.setCargo(entradaDato.nextInt());
+                    }while (objetoEmpleado.getCargo() != 1 && objetoEmpleado.getCargo() != 2);
 
 
                     System.out.print("¿Tiene Visa o Pasaporte? \n1. Si \n2. No \n3. Ambas \nElige una opcion: ");
-                    objetoeEmpleado.setVisa(entradaDato.nextInt());
+                    objetoEmpleado.setVisa(entradaDato.nextInt());
                     System.out.println("");
 
-                    empleados.add(objetoeEmpleado);
+                    empleados.add(objetoEmpleado);
 
                     break;
                 case 2:
+                    Hospedaje hospedaje = new Hospedaje();
+                    Viaje viaje = new Viaje();
+                    Transporte transporte = new Transporte();
+
                     System.out.println("****** Datos del hospedaje ******");
                     System.out.println("");
+
+
+                    /* CODIGO AQUI */
+
+
+
                     System.out.println("****** Ingrese la fecha del viaje ******");
                     System.out.print("Fecha de ida (dd/mm/aaaa): ");
                     viaje.setFechaViajeIda(entradaDato.next());
@@ -95,7 +107,7 @@ public class Main {
                         viaje.setTipoViaje(entradaDato.nextInt());
 
                         System.out.println("");
-                        System.out.println("Hola " + empleado.getNombre() + "\ncuentas con un auxilio en el viaje de:  $" + viaje.calcularAuxilioVuelo(empleado.getCargo(), empleado.getSalario()));
+                        System.out.println("Hola " + empleado.getNombre() + " " + empleado.getApellido() + "\ncuentas con un auxilio en el viaje de:  $" + viaje.calcularAuxilioVuelo(empleado.getCargo(), empleado.getSalario()));
                         System.out.println("");
 
                         if (viaje.getTipoViaje() == 1){
@@ -137,6 +149,10 @@ public class Main {
                     System.out.println("El valor del pasaje hasta el hotel es: $" + transporte.getValorPasaje());
                     System.out.println("");
 
+                    viajes.add(viaje);
+                    viajes.add(hospedaje);
+                    viajes.add(transporte);
+
                     break;
                 case 3:
                     System.out.println("***** MOSTRANDO DATOS DEL EMPLEADO *****");
@@ -163,6 +179,22 @@ public class Main {
                     System.out.println("Tipo de Viaje: 1 -> Nacional \nTipo de Transporte: 1 -> Aereo / 2 -> Terrestre");
                     System.out.println("Tipo de Viaje: 2 -> Internacional \nTipo de Transporte: 1 -> Aereo / 2 -> Maritimo");
 
+                    System.out.println("Ingrese la cedula del empleado que desea ver los viajes");
+                    int cedula = entradaDato.nextInt();
+
+                    for (Empleado viajeEmpleado: empleados) {
+                        for (Viaje mostrarViajeEmpleado: viajes) {
+                            if(viajeEmpleado.getCedula() == cedula){
+
+                                System.out.println("DATOS AQUI");
+
+                            }else{
+                                System.out.println("el empleado no esta resgistrado");
+                            }
+                        }
+                        
+                    }
+                    
                     break;
                 default:
                     break;

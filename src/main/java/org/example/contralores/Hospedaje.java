@@ -1,6 +1,6 @@
 package org.example.contralores;
 
-public class Hospedaje {
+public class Hospedaje extends Viaje {
 
     private int duracionEstadia, incluyeAlimentacion, hotel, tipoHabitacion;
     private double valorHotel;
