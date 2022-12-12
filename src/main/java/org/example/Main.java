@@ -1,8 +1,5 @@
 package org.example;
-import org.example.contralores.Empleado;
-import org.example.contralores.Hospedaje;
-import org.example.contralores.Transporte;
-import org.example.contralores.Viaje;
+import org.example.contralores.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -14,7 +11,9 @@ public class Main {
         ArrayList<Viaje> viajes = new ArrayList<Viaje>();
         ArrayList<Hospedaje> hospedajes = new ArrayList<Hospedaje>();
         ArrayList<Transporte> tranportes = new ArrayList<Transporte>();
+        ArrayList<Alimentacion> alimentos = new ArrayList<Alimentacion>();
 
+        Alimentacion objetoAlimentacion = new Alimentacion();
         Hospedaje objetoHospedaje = new Hospedaje();
         Viaje objetoViaje = new Viaje();
         Transporte objetoTransporte = new Transporte();
@@ -92,7 +91,9 @@ public class Main {
                                 if (hospedaje.getHotel() == 1 || hospedaje.getHotel()==2){
                                     System.out.print("¿En que tipo de habitación desea hospedarse? \n1. Sencilla \n2. Suite \nElige una opcion: ");
                                     hospedaje.setTipoHabitacion(entradaDato.nextInt());
-                                }else {
+                                } else if (hospedaje.getHotel() == 2) {
+                                    objetoAlimentacion.setComidasExtras(1);
+                                } else {
                                     System.out.println("Seleccione una opcion correcta!!!");
                                 }
                             }while (hospedaje.getHotel() != 1 && hospedaje.getHotel() != 2);
@@ -104,9 +105,9 @@ public class Main {
 
                             System.out.println("****** Datos del viaje ******");
                             System.out.println("");
-                            System.out.print("¿Desde donde viaja?");
+                            System.out.print("¿Desde donde viaja? ");
                             viaje.setOrigen(entradaDato.next());
-                            System.out.print("¿Hacia donde Viaja (destino)?");
+                            System.out.print("¿Hacia donde Viaja (destino)? ");
                             viaje.setDestino(entradaDato.next());
 
                             do {
@@ -114,7 +115,7 @@ public class Main {
                                 viaje.setTipoViaje(entradaDato.nextInt());
 
                                 System.out.println("");
-                                System.out.println("Hola " + buscarEmpleado.getNombre() + " " + buscarEmpleado.getApellido() + "\ncuentas con un auxilio en el viaje de:  $" + viaje.calcularAuxilioVuelo(buscarEmpleado.getCargo(), buscarEmpleado.getSalario()));
+                                System.out.println("Hola " + buscarEmpleado.getNombre() + " " + buscarEmpleado.getApellido() + "\ncuentas con un auxilio en el viaje de:  $" + viaje.calcularAuxilioVuelo(viaje.getTipoViaje(), buscarEmpleado.getCargo(), buscarEmpleado.getSalario()));
                                 System.out.println("");
 
                                 if (viaje.getTipoViaje() == 1){
@@ -140,7 +141,7 @@ public class Main {
                             }while (viaje.getTipoViaje() != 1 && viaje.getTipoViaje() != 2);
 
                             System.out.println("");
-                            System.out.println("****** El valor total del viaje es: " + viaje.calcularCostoVuelo(transporte.getTipoTransporte()) + " ******");
+                            System.out.println("****** El valor total del viaje es: " + viaje.calcularCostoVuelo(viaje.getTipoViaje(), transporte.getTipoTransporte()) + " ******");
                             System.out.println("");
 
 
@@ -156,9 +157,12 @@ public class Main {
                             System.out.println("El valor del pasaje hasta el hotel es: $" + transporte.getValorPasaje());
                             System.out.println("");
 
+                            objetoAlimentacion.setValorAlimentacion(20000);
+
                             viajes.add(viaje);
                             tranportes.add(transporte);
                             hospedajes.add(hospedaje);
+                            alimentos.add(objetoAlimentacion);
                             encontrarEmpleado=false;
                             break;
                         }else {
@@ -172,8 +176,6 @@ public class Main {
                     }else{
                         continue;
                     }
-
-
 
                     break;
                 case 3:
@@ -190,16 +192,12 @@ public class Main {
                         System.out.println("Cargo: "+ verEmpleado.getCargo() );
                         System.out.println("Salario: "+ verEmpleado.getSalario() );
                         System.out.println("Cuenta con visa o pasaporte: "+ verEmpleado.getVisa());
+                        System.out.println("");
                     }
 
                     break;
                 case 4:
-                    System.out.println("***** MOSTRANDO VIAJES REALIZADOS *****");
-                    System.out.println();
-                    System.out.println("Habitación: 1 -> Sencilla / 2 -> Suite");
-                    System.out.println("Hotel: 1 -> Decameron / 2 -> Dann Carlton / 3 -> Hostal");
-                    System.out.println("Tipo de Viaje: 1 -> Nacional \nTipo de Transporte: 1 -> Aereo / 2 -> Terrestre");
-                    System.out.println("Tipo de Viaje: 2 -> Internacional \nTipo de Transporte: 1 -> Aereo / 2 -> Maritimo");
+
 
                     System.out.println("Ingrese la cedula del empleado que desea ver los viajes");
                     int cedula = entradaDato.nextInt();
@@ -207,6 +205,15 @@ public class Main {
                     for (Empleado viajeEmpleado: empleados) {
                         for (Viaje mostrarViajeEmpleado: viajes) {
                             if(viajeEmpleado.getCedula() == cedula){
+                                System.out.println("***** MOSTRANDO VIAJES REALIZADOS *****");
+                                System.out.println();
+                                System.out.println("Habitación: 1 -> Sencilla / 2 -> Suite");
+                                System.out.println("Hotel: 1 -> Decameron / 2 -> Dann Carlton / 3 -> Hostal");
+                                System.out.println("Tipo de Viaje: 1 -> Nacional \nTipo de Transporte: 1 -> Aereo / 2 -> Terrestre");
+                                System.out.println("Tipo de Viaje: 2 -> Internacional \nTipo de Transporte: 1 -> Aereo / 2 -> Maritimo");
+                                System.out.println("");
+
+                                System.out.println("El empleado " + viajeEmpleado.getNombre() + " " + viajeEmpleado.getApellido());
 
                                 System.out.println("Realizara un viaje " + mostrarViajeEmpleado.getTipoViaje());
                                 System.out.println("Viajara de " + mostrarViajeEmpleado.getOrigen() + " a " + mostrarViajeEmpleado.getDestino());
@@ -219,16 +226,32 @@ public class Main {
                                     for (Hospedaje mostrarHospedajeEmpleado: hospedajes){
                                         System.out.println("Se hospedara en el hotel " + mostrarHospedajeEmpleado.getHotel() + " durante " + mostrarHospedajeEmpleado.getDuracionEstadia() + " dias ");
                                         System.out.println("la habitacion sera " + mostrarHospedajeEmpleado.getTipoHabitacion() + " e incluira " + mostrarHospedajeEmpleado.getIncluyeAlimentacion() + " comidas ");
+                                        System.out.println("");
+
+
+                                        for (Alimentacion mostrarAlimenacionEmpleado: alimentos){
+
+                                            System.out.println("***** Los viaticos del viaje fueron *****");
+                                            System.out.println("Se asigno un auxilio de vuelo por $" + objetoViaje.calcularAuxilioVuelo(mostrarViajeEmpleado.getTipoViaje(), viajeEmpleado.getCargo(), viajeEmpleado.getSalario()) + " de acuerdo a su salario.");
+                                            System.out.println("El valor valor del vuelo fue $" + objetoViaje.calcularCostoVuelo(mostrarViajeEmpleado.getTipoViaje(), mostrarTrasporteEmpleado.getTipoTransporte()));
+                                            System.out.println("El valor de las comidas no incluidas en el hotel fueron $" + objetoAlimentacion.valorComidasExtras(mostrarHospedajeEmpleado.getHotel(), mostrarAlimenacionEmpleado.getComidasExtras(), mostrarAlimenacionEmpleado.getValorAlimentacion()));
+                                            System.out.println("El valor del trasnporte hasta el hotel fue: $" + mostrarTrasporteEmpleado.getValorPasaje());
+                                            System.out.println("");
+
+                                        }
 
                                     }
+
                                 }
 
                             }else{
-                                System.out.println("el empleado no esta resgistrado");
+                                System.out.println("el empleado no tiene viajes registrados");
                             }
                         }
 
                     }
+
+
 
                     break;
                 default:
