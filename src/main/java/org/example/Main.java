@@ -13,6 +13,7 @@ public class Main {
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
         ArrayList<Viaje> viajes = new ArrayList<Viaje>();
         ArrayList<Hospedaje> hospedajes = new ArrayList<Hospedaje>();
+        ArrayList<Transporte> tranportes = new ArrayList<Transporte>();
 
         Hospedaje objetoHospedaje = new Hospedaje();
         Viaje objetoViaje = new Viaje();
@@ -156,7 +157,7 @@ public class Main {
                             System.out.println("");
 
                             viajes.add(viaje);
-                            viajes.add(transporte);
+                            tranportes.add(transporte);
                             hospedajes.add(hospedaje);
                             encontrarEmpleado=false;
                             break;
@@ -207,10 +208,21 @@ public class Main {
                         for (Viaje mostrarViajeEmpleado: viajes) {
                             if(viajeEmpleado.getCedula() == cedula){
 
-                                System.out.println("El empleado realizara un viaje: " + mostrarViajeEmpleado.getTipoViaje());
-                                System.out.println("El empleado viajara desde : " + mostrarViajeEmpleado.getOrigen());
-                                System.out.println("El empleado viajara hasta : " + mostrarViajeEmpleado.getDestino());
-                                System.out.println("El empleado tendra el viaje de ida, el dia : " + mostrarViajeEmpleado.getFechaViajeIda() + "y regresara el dia:" +mostrarViajeEmpleado.getFechaViajeRegreso());
+                                System.out.println("Realizara un viaje " + mostrarViajeEmpleado.getTipoViaje());
+                                System.out.println("Viajara de " + mostrarViajeEmpleado.getOrigen() + " a " + mostrarViajeEmpleado.getDestino());
+                                System.out.println("Viajara el " + mostrarViajeEmpleado.getFechaViajeIda() + " y regresara el  " + mostrarViajeEmpleado.getFechaViajeRegreso());
+
+                                for (Transporte mostrarTrasporteEmpleado: tranportes) {
+                                    System.out.println("Viajara por medio " + mostrarTrasporteEmpleado.getMedioTransporte());
+                                    System.out.println("Se transportara hacia el hotel " + mostrarTrasporteEmpleado.getTipoTransporte());
+
+                                    for (Hospedaje mostrarHospedajeEmpleado: hospedajes){
+                                        System.out.println("Se hospedara en el hotel " + mostrarHospedajeEmpleado.getHotel() + " durante " + mostrarHospedajeEmpleado.getDuracionEstadia() + " dias ");
+                                        System.out.println("la habitacion sera " + mostrarHospedajeEmpleado.getTipoHabitacion() + " e incluira " + mostrarHospedajeEmpleado.getIncluyeAlimentacion() + " comidas ");
+
+                                    }
+                                }
+
                             }else{
                                 System.out.println("el empleado no esta resgistrado");
                             }
